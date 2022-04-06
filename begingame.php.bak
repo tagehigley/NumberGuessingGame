@@ -1,0 +1,25 @@
+<?php
+     session_start();
+     $_SESSION["Random"] = rand(1,100);
+
+	 $_SESSION["GuessCount"] = 0;
+   
+?>
+
+<!DOCTYPE html>
+
+	<html>
+		<body>
+			
+			<!-- Change the user to the user name -->
+			
+			<h1> Welcome <?php echo $_SESSION["Username"] ?></h1>
+			
+			<p>Click the Start Game button below to start the game!</p>
+			
+			<form action="guessinggame.php" method="POST">
+				<input type="submit" value="Start Game"> 
+			</form>
+			
+		</body>
+	</html>

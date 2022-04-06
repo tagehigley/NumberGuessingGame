@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+  <html>
+    <body>
+	
+	<form action="" method="post">
+		<p>First: <input type="text" name="FirstName"/></p>
+
+	  
+		 <input type="submit" value="Submit"/>
+     </form>
+	
+	 <?php
+	 
+	 $first = $_POST["FirstName"];
+	
+	 if ($first == ""){
+		 header('guessinggamelogin.php');
+     } else {
+		 header('test.php');
+	 }
+	 ?>
+	
+   </body>
+  
+  </html>
+   
+	  

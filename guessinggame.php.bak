@@ -1,0 +1,85 @@
+<?php 
+
+   session_start();
+   
+?>
+
+
+<!DOCTYPE html>
+ <html>
+ 
+  <body>
+  
+  <div class="container">
+   <h1>Guess a number between 1-100!</h1>
+   <br>
+ 
+   <form action="" method="post">
+ 
+     <p>Guess: <input type="text" name="PlayerGuess" autocomplete="new-password"/></p>
+	 <br>
+
+     <input type="submit" value="Submit" name="SubmitBtn"/>
+	 <br>
+   
+   </form>
+   
+   <br>
+   <br>
+   <br>
+   <a href="begingame.php">Restart game</a>
+
+   <?php
+   
+     //Compares the two entered numbers together and returns if the value is too high, too low, or correct
+     function CompareNumbers($random, $playerGuess){
+		 
+
+		 
+		 if ($random > $playerGuess) {
+			 echo "<h3>Guess is too low!</h3>";
+		 } else if ($random < $playerGuess){
+			 echo "<h3>Guess is too high!</h3>";;
+		 } else if ($random == $playerGuess){
+			 echo "<h1>Correct!</h1>";
+			 echo "<h2>Score: " . $_SESSION["GuessCount"] . "</h2>";
+		 }
+	 } 
+	 
+	 // Checks the users input and determines if the users input is valid or not
+	 //Boolean return
+	 function ValidateInput($playerGuess){
+			 
+			if(is_numeric($playerGuess) && ($playerGuess >= 1) && ($playerGuess <= 100)) {
+				return true;
+			} else {
+				echo "You must enter a valid integer between 1 - 100!";
+				return false;
+		 }
+		 
+	 } 
+   
+   
+     
+	 $random = $_SESSION["Random"];
+	 $submitBtn = $_POST["Submitbtn"];
+	 
+	 $playerGuess = $_POST["PlayerGuess"];
+	 
+	 
+	 if ($playerGuess){
+		if (ValidateInput($playerGuess)) {
+			$_SESSION["GuessCount"]++;
+			CompareNumbers($random, $playerGuess, $playCount);
+
+		}
+     } 
+
+
+   ?>
+   
+   
+  </div>
+   
+ </body>
+</html>
